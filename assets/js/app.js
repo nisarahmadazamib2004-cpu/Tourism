@@ -1,0 +1,1 @@
+document.addEventListener('DOMContentLoaded',()=>{const s=document.getElementById('sidebar'),t=document.getElementById('sidebarToggle');if(t)t.onclick=()=>s?.classList.toggle('open');const q=document.getElementById('globalSearch');if(q)q.addEventListener('input',()=>document.dispatchEvent(new CustomEvent('erp:search',{detail:q.value})));});

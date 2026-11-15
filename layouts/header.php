@@ -1,0 +1,2 @@
+<?php require_once __DIR__.'/../config/app.php'; require_once __DIR__.'/../config/functions.php'; ?>
+<!doctype html><html lang="en" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title><?= e($page_title ?? APP_NAME) ?></title><link rel="stylesheet" href="<?= e(url('assets/css/app.css')) ?>"><link rel="stylesheet" href="<?= e(url('assets/css/themes.css')) ?>"></head><body>

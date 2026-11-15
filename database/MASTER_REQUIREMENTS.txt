@@ -1,0 +1,3653 @@
+============================================================
+MASTER PROJECT REQUIREMENT
+COMMERCIAL WHITE-LABEL TOURISM / TRAVEL / UMRAH ERP
+============================================================
+
+I want to design a completely NEW, PROFESSIONAL, COMMERCIAL-GRADE
+Tourism / Travel / Umrah / Pilgrimage ERP database and system
+architecture from scratch.
+
+IMPORTANT:
+
+This is NOT a simple one-company internal database.
+
+This system will be developed as a commercial product and later
+sold/licensed to multiple tourism, travel, Umrah, pilgrimage,
+ticketing, hotel, transport and related companies.
+
+Therefore the architecture MUST be:
+
+- Multi-Tenant
+- Multi-Company
+- Multi-Branch
+- Multi-User
+- White-Label
+- Scalable
+- Secure
+- Modular
+- API-ready
+- Commercially reusable
+- Production-ready
+- SaaS-ready
+- Localization-ready
+
+The same ERP codebase and database architecture must support
+many different companies.
+
+============================================================
+1. CORE COMMERCIAL PRINCIPLE
+============================================================
+
+The product must follow:
+
+ONE ERP CODEBASE
++
+ONE PROFESSIONAL DATABASE ARCHITECTURE
++
+MULTIPLE COMPANIES / TENANTS
++
+STRICT DATA ISOLATION
++
+DYNAMIC BRANDING
++
+DYNAMIC LANGUAGE
++
+DYNAMIC CURRENCY
++
+DYNAMIC SETTINGS
++
+DYNAMIC MODULES
++
+DYNAMIC PERMISSIONS
+
+Do NOT design:
+
+one company = one separate PHP project.
+
+Instead design:
+
+one ERP product = many isolated companies.
+
+============================================================
+2. WHITE-LABEL REQUIREMENT
+============================================================
+
+When I sell the ERP to another company, that company should only
+need to provide its business information and branding.
+
+The company can provide:
+
+- Company Name
+- Legal Name
+- Logo
+- Favicon
+- Light Logo
+- Dark Logo
+- Invoice Logo
+- Report Logo
+- Primary Color
+- Secondary Color
+- Accent Color
+- Background Color
+- Text Color
+- Sidebar Color
+- Button Color
+- Company Slogan
+- Company Description
+- Address
+- Phone
+- Email
+- Website
+- Registration Number
+- Tax Number
+- Default Language
+- Enabled Languages
+- Default Currency
+- Enabled Currencies
+- Timezone
+- Date Format
+- Number Format
+- Fiscal Year
+- Invoice Prefix
+- Receipt Prefix
+- Customer Prefix
+- Booking Prefix
+- Ticket Prefix
+- Umrah Prefix
+- Branch Information
+- Contact Information
+- Social Media Information
+
+The ERP must automatically apply these settings.
+
+I must NOT manually edit PHP/CSS/database code for every new company.
+
+============================================================
+3. DYNAMIC BRANDING
+============================================================
+
+Company branding must automatically apply to:
+
+- Login
+- Register
+- Forgot Password
+- Reset Password
+- Dashboard
+- Sidebar
+- Header
+- Footer
+- Navigation
+- Buttons
+- Cards
+- Forms
+- Tables
+- Charts
+- Notifications
+- Modals
+- Reports
+- Invoices
+- Receipts
+- PDFs
+- Print documents
+- Email templates
+- Statements
+- Umrah documents
+- Ticket documents
+- Hotel vouchers
+- Transport vouchers
+- Visa documents
+
+The company theme must be loaded dynamically.
+
+Never hardcode a specific company's colors into the source code.
+
+============================================================
+4. COMPANY BRANDING TABLE
+============================================================
+
+Create a professional company branding/settings architecture.
+
+Support:
+
+company_id
+logo
+favicon
+logo_light
+logo_dark
+invoice_logo
+report_logo
+
+primary_color
+secondary_color
+accent_color
+background_color
+surface_color
+text_color
+muted_text_color
+sidebar_color
+sidebar_text_color
+button_color
+button_hover_color
+
+slogan
+description
+
+Branding must be tenant-specific.
+
+============================================================
+5. COMPANY LOGO STORAGE
+============================================================
+
+Support secure company-specific file storage.
+
+Example:
+
+storage/
+    companies/
+        {company_id}/
+            branding/
+            documents/
+            invoices/
+            reports/
+            passports/
+            visas/
+
+Never allow Company A to access Company B's files.
+
+Validate:
+
+- file type
+- MIME type
+- extension
+- file size
+- upload permission
+- storage path
+- filename
+- access permission
+
+Prevent:
+
+- PHP file upload attacks
+- executable uploads
+- path traversal
+- unauthorized file access
+
+============================================================
+6. MULTI-TENANT ARCHITECTURE
+============================================================
+
+Every company-specific table must support:
+
+company_id
+
+Where applicable also:
+
+branch_id
+created_by
+updated_by
+
+The backend must determine company_id from the authenticated
+user/session/token.
+
+Never trust company_id received directly from the browser.
+
+A user from Company A must NEVER access Company B data.
+
+This applies to:
+
+- Customers
+- Users
+- Branches
+- Tickets
+- Umrah
+- Hotels
+- Transport
+- Visa
+- Foreign Visitors
+- Invoices
+- Payments
+- Expenses
+- Finance
+- Reports
+- Documents
+- Notifications
+- Audit logs
+- Settings
+- Files
+
+============================================================
+7. MULTI-BRANCH
+============================================================
+
+Each company can have multiple branches.
+
+Branch fields should support:
+
+- company_id
+- branch_name
+- code
+- address
+- city
+- country
+- phone
+- email
+- manager
+- status
+- timezone
+- currency
+- created_at
+- updated_at
+
+Users can be assigned to:
+
+- company
+- branch
+- role
+
+Support:
+
+- company-wide users
+- branch users
+- branch managers
+- administrators
+
+============================================================
+8. THREE LANGUAGE SYSTEM
+============================================================
+
+The ERP MUST fully support:
+
+1. Pashto
+2. Dari
+3. English
+
+Language codes:
+
+ps
+fa
+en
+
+Pashto and Dari:
+
+RTL
+
+English:
+
+LTR
+
+============================================================
+9. ABSOLUTELY NO MIXED LANGUAGE
+============================================================
+
+When Pashto is selected:
+
+EVERY visible UI text must be Pashto.
+
+When Dari is selected:
+
+EVERY visible UI text must be Dari.
+
+When English is selected:
+
+EVERY visible UI text must be English.
+
+Do NOT mix:
+
+Pashto + English
+Dari + English
+Pashto + Dari
+
+inside normal interface text.
+
+This includes:
+
+- Sidebar
+- Dashboard
+- Buttons
+- Forms
+- Validation
+- Alerts
+- Notifications
+- Tables
+- Charts
+- Tooltips
+- Dropdowns
+- Search
+- Reports
+- PDF
+- Print
+- Email
+- Invoice
+- Receipt
+- Empty states
+- Error messages
+- Success messages
+- Confirmation dialogs
+
+Only universally required technical values such as:
+
+- email addresses
+- URLs
+- file extensions
+- database identifiers
+
+may remain technical.
+
+============================================================
+10. LANGUAGE ARCHITECTURE
+============================================================
+
+Do not hardcode visible UI text inside PHP files.
+
+Create centralized translation architecture.
+
+Support:
+
+translation keys
+language files
+database translations where appropriate
+
+Example:
+
+dashboard.title
+dashboard.customers
+dashboard.revenue
+dashboard.expenses
+
+Support fallback language.
+
+Allow company default language.
+
+Allow user language preference.
+
+============================================================
+11. RTL / LTR
+============================================================
+
+The entire UI must dynamically switch:
+
+dir="rtl"
+
+for:
+
+Pashto
+Dari
+
+and:
+
+dir="ltr"
+
+for English.
+
+This must affect:
+
+- Sidebar
+- Header
+- Forms
+- Tables
+- Charts
+- Cards
+- Modal
+- Pagination
+- Navigation
+- Icons
+- Alignment
+- Spacing
+- PDF
+- Print
+
+============================================================
+12. LOCALIZATION
+============================================================
+
+Support:
+
+- Language
+- RTL/LTR
+- Timezone
+- Date format
+- Number format
+- Currency
+- Decimal precision
+- Thousand separator
+- Week start day
+- Fiscal year
+- Regional settings
+
+============================================================
+13. CURRENCY SYSTEM
+============================================================
+
+Support multiple currencies.
+
+Examples:
+
+AFN
+USD
+SAR
+AED
+EUR
+TRY
+
+Create:
+
+currencies
+company_currencies
+exchange_rates
+exchange_rate_history
+
+Every financial transaction must support:
+
+currency_code
+exchange_rate
+transaction_amount
+base_currency_amount
+
+Never use FLOAT for money.
+
+Use DECIMAL.
+
+============================================================
+14. EXCHANGE RATE SYSTEM
+============================================================
+
+Support:
+
+- manual exchange rates
+- effective dates
+- historical rates
+- company-specific rates
+- base currency
+- transaction currency
+
+Do not overwrite historical exchange rates used in old transactions.
+
+============================================================
+15. TIMEZONE
+============================================================
+
+Each company can have a timezone.
+
+Examples:
+
+Asia/Kabul
+Asia/Riyadh
+Asia/Dubai
+Europe/Istanbul
+
+Store timestamps consistently.
+
+Display according to company/user timezone.
+
+============================================================
+16. USERS
+============================================================
+
+Create professional user management.
+
+Support:
+
+- username
+- email
+- phone
+- password_hash
+- first_name
+- last_name
+- avatar
+- company_id
+- branch_id
+- role_id
+- language
+- timezone
+- status
+- last_login_at
+- password_changed_at
+- created_at
+- updated_at
+
+============================================================
+17. ROLES AND PERMISSIONS
+============================================================
+
+Create RBAC.
+
+Support:
+
+roles
+permissions
+role_permissions
+user_roles
+
+Permissions should include:
+
+view
+create
+edit
+delete
+approve
+export
+print
+manage
+financial access
+reports access
+settings access
+
+Permissions must be enforced in backend.
+
+Do NOT only hide buttons.
+
+============================================================
+18. ADMINISTRATOR
+============================================================
+
+Support:
+
+System Administrator
+Company Administrator
+Branch Manager
+Finance Manager
+Accountant
+Sales Manager
+Ticket Agent
+Umrah Officer
+Hotel Officer
+Transport Manager
+Visa Officer
+Report User
+Read-only User
+
+Roles should be configurable.
+
+============================================================
+19. LOGIN SECURITY
+============================================================
+
+Implement:
+
+- secure sessions
+- session regeneration
+- secure cookies
+- HttpOnly
+- SameSite
+- Secure when HTTPS
+- session timeout
+- CSRF protection
+- login attempt protection
+- failed login tracking
+- IP tracking
+- user-agent tracking
+- login history
+- logout history
+- password hashing
+- password expiration if configured
+
+============================================================
+20. LOGIN ATTEMPT PROTECTION
+============================================================
+
+Support configurable failed login protection.
+
+Example:
+
+5 failed attempts
+=
+3 minute temporary block
+
+Store:
+
+- identifier
+- IP
+- user agent
+- failure reason
+- timestamp
+- success
+
+============================================================
+21. PASSWORD RESET
+============================================================
+
+Secure password recovery.
+
+Support:
+
+- username
+- email
+- phone
+- secure token
+- token hash
+- expiration
+- used_at
+- password reset history
+
+Never store raw reset tokens.
+
+Password reset must invalidate old unused tokens.
+
+============================================================
+22. AUDIT LOG
+============================================================
+
+Create complete audit logging.
+
+Record:
+
+- company_id
+- branch_id
+- user_id
+- action
+- module
+- table_name
+- record_id
+- old_values
+- new_values
+- IP
+- user agent
+- timestamp
+
+Track:
+
+CREATE
+UPDATE
+DELETE
+LOGIN
+LOGOUT
+PASSWORD CHANGE
+PASSWORD RESET
+APPROVAL
+PAYMENT
+REFUND
+EXPORT
+PRINT
+SETTINGS CHANGE
+
+============================================================
+23. GLOBAL SEARCH
+============================================================
+
+Create global search architecture.
+
+Search across authorized:
+
+- customers
+- tickets
+- bookings
+- invoices
+- payments
+- Umrah
+- hotels
+- visas
+- foreign visitors
+- transport
+- documents
+
+Respect company and branch permissions.
+
+============================================================
+24. CUSTOMER MANAGEMENT
+============================================================
+
+Create professional customer architecture.
+
+Support:
+
+- customer profile
+- passport
+- national ID
+- contact
+- address
+- country
+- city
+- emergency contact
+- family members
+- documents
+- notes
+- financial ledger
+- bookings
+- invoices
+- payments
+- services
+- pickup/dropoff
+- history
+
+Do not use a single full_name field only.
+
+Support:
+
+first_name
+middle_name
+last_name
+
+and localized/display names if required.
+
+============================================================
+25. DOCUMENT MANAGEMENT
+============================================================
+
+Central document management.
+
+Support:
+
+- passports
+- visas
+- IDs
+- contracts
+- invoices
+- receipts
+- tickets
+- hotel vouchers
+- Umrah documents
+- other documents
+
+Store:
+
+- company_id
+- document_type
+- entity_type
+- entity_id
+- file_path
+- original_name
+- MIME type
+- file_size
+- uploaded_by
+- created_at
+- expiration_date
+
+============================================================
+26. COUNTRY / CITY / AIRPORT
+============================================================
+
+Create normalized reference tables:
+
+countries
+cities
+airports
+airlines
+
+Support:
+
+- ISO country code
+- airport IATA code
+- airport ICAO code
+- timezone
+- city
+- country
+
+============================================================
+27. SERVICE CATALOG
+============================================================
+
+Create a centralized service catalog.
+
+Examples:
+
+- Ticket
+- Umrah
+- Hotel
+- Transport
+- Visa
+- Airport Transfer
+- Pickup
+- Drop-off
+- Foreign Visitor Service
+- VIP Service
+- Other Service
+
+Support:
+
+service_code
+service_name
+category
+cost
+selling_price
+currency
+tax
+status
+
+============================================================
+28. PICKUP / DROP-OFF SYSTEM
+============================================================
+
+THIS IS A CORE REQUIREMENT.
+
+Create a reusable normalized pickup/drop-off architecture.
+
+It must be usable by:
+
+- Umrah
+- Hotel
+- Transport
+- Airport Transfer
+- Tickets
+- Foreign Visitors
+- VIP Services
+- General bookings
+
+============================================================
+
+Support locations:
+
+- Airport
+- Hotel
+- Residence
+- Office
+- Bus Station
+- Train Station
+- Custom Location
+
+Create service_locations.
+
+Fields should support:
+
+- company_id
+- location_type
+- name
+- country
+- city
+- address
+- latitude
+- longitude
+- contact_name
+- contact_phone
+- notes
+- status
+
+============================================================
+
+Create pickup/dropoff records with:
+
+- company_id
+- branch_id
+- booking/service reference
+- pickup_location_id
+- dropoff_location_id
+- pickup_date
+- pickup_time
+- dropoff_date
+- dropoff_time
+- flight_number
+- vehicle_id
+- driver_id
+- passenger_count
+- luggage_count
+- special_instructions
+- cost_price
+- selling_price
+- currency
+- status
+
+Statuses:
+
+pending
+confirmed
+assigned
+in_progress
+completed
+cancelled
+no_show
+
+============================================================
+29. TRANSPORT
+============================================================
+
+Create:
+
+transport_providers
+vehicles
+vehicle_types
+drivers
+driver_documents
+transport_bookings
+transport_assignments
+
+Vehicle fields:
+
+- plate number
+- type
+- capacity
+- luggage capacity
+- model
+- year
+- provider
+- status
+
+Driver fields:
+
+- name
+- phone
+- license number
+- license expiry
+- documents
+- status
+
+============================================================
+30. TICKETING
+============================================================
+
+Support:
+
+- ticket bookings
+- passengers
+- airlines
+- routes
+- segments
+- PNR
+- ticket number
+- departure
+- arrival
+- baggage
+- fare
+- taxes
+- commission
+- supplier cost
+- selling price
+- currency
+- payment
+- refund
+- cancellation
+- ticket status
+
+Support multi-segment tickets.
+
+============================================================
+31. UMRAH MANAGEMENT
+============================================================
+
+Create complete Umrah system.
+
+Support:
+
+- Umrah packages
+- package duration
+- package type
+- package price
+- VIP
+- Regular
+- customers
+- family members
+- passports
+- visas
+- hotels
+- transport
+- flights
+- pickup
+- drop-off
+- documents
+- payments
+- invoices
+- expenses
+- suppliers
+- agencies
+- itinerary
+- group management
+
+============================================================
+32. UMRAH FAMILY MANAGEMENT
+============================================================
+
+Support family/group booking.
+
+One booking can contain:
+
+- main customer
+- spouse
+- children
+- parents
+- relatives
+- other travelers
+
+Each person must have independent:
+
+- passport
+- visa
+- payment
+- document
+- status
+
+============================================================
+33. UMRAH VISA
+============================================================
+
+Create:
+
+umrah_visas
+
+Support:
+
+- passport
+- visa number
+- application number
+- issue date
+- expiry date
+- status
+- provider
+- Saudi company
+- Nusuk-related reference if applicable
+- document
+- notes
+
+============================================================
+34. HOTEL MANAGEMENT
+============================================================
+
+Support:
+
+hotels
+hotel_branches
+rooms
+room_types
+hotel_rates
+hotel_bookings
+hotel_guests
+hotel_payments
+hotel_vouchers
+
+Support:
+
+- check-in
+- check-out
+- nights
+- rooms
+- guests
+- cost
+- selling price
+- taxes
+- discount
+- currency
+- cancellation
+
+============================================================
+============================================================
+
+Support:
+
+- itineraries
+- schedules
+- transport
+- guide
+- cost
+- selling price
+- booking
+- passengers
+- status
+
+============================================================
+36. VISA MANAGEMENT
+============================================================
+
+Create general visa management.
+
+Support:
+
+- visa applications
+- visa types
+- countries
+- applicants
+- passport
+- application number
+- submission date
+- issue date
+- expiry date
+- status
+- cost
+- selling price
+- documents
+- payments
+
+============================================================
+37. FOREIGN VISITORS
+============================================================
+
+Create dedicated Foreign Visitor module.
+
+Support:
+
+- visitor profile
+- nationality
+- passport
+- visa
+- arrival
+- departure
+- hotel
+- transport
+- pickup
+- drop-off
+- guide
+- services
+- documents
+- payments
+- invoices
+- expenses
+- notes
+
+============================================================
+38. AGENCIES
+============================================================
+
+Support travel agencies / partner agencies.
+
+Fields:
+
+- company_id
+- agency_name
+- registration number
+- contact
+- address
+- country
+- city
+- commission
+- credit limit
+- currency
+- status
+
+Support agency ledger.
+
+============================================================
+39. SUPPLIERS
+============================================================
+
+Support:
+
+- hotels
+- airlines
+- transport providers
+- visa providers
+- Saudi Umrah providers
+- other suppliers
+
+Supplier ledger must be available.
+
+============================================================
+40. INVOICE SYSTEM
+============================================================
+
+Create professional invoice architecture.
+
+Support:
+
+- invoice
+- invoice items
+- customer
+- company
+- branch
+- service
+- quantity
+- unit price
+- discount
+- tax
+- subtotal
+- total
+- paid
+- due
+- currency
+- exchange rate
+- status
+
+Statuses:
+
+draft
+issued
+partially_paid
+paid
+cancelled
+overdue
+
+============================================================
+41. PAYMENT SYSTEM
+============================================================
+
+Create:
+
+payments
+payment_allocations
+payment_methods
+payment_accounts
+receipts
+
+Support:
+
+- cash
+- bank
+- card
+- transfer
+- online
+- other
+
+Every payment must have:
+
+- company
+- branch
+- customer/supplier/agency
+- amount
+- currency
+- exchange rate
+- date
+- reference
+- method
+- account
+- receipt
+
+============================================================
+42. EXPENSE SYSTEM
+============================================================
+
+Support:
+
+expenses
+expense_categories
+expense_items
+expense_documents
+expense_payments
+
+Track:
+
+- supplier
+- employee
+- branch
+- category
+- amount
+- currency
+- date
+- payment method
+- account
+- approval
+- receipt/document
+
+============================================================
+43. FULL ACCOUNTING SYSTEM
+============================================================
+
+Implement proper DOUBLE-ENTRY ACCOUNTING.
+
+Create:
+
+- chart_of_accounts
+- account_types
+- accounting_periods
+- fiscal_years
+- journal_entries
+- journal_lines
+- finance_accounts
+- currencies
+- exchange_rates
+- customer_ledger
+- supplier_ledger
+- agency_ledger
+- bank_accounts
+- cash_accounts
+- tax_accounts
+- receivables
+- payables
+
+============================================================
+44. CHART OF ACCOUNTS
+============================================================
+
+Support account hierarchy:
+
+Assets
+Liabilities
+Equity
+Revenue
+Expenses
+
+Support:
+
+parent_account_id
+account_code
+account_name
+account_type
+company_id
+branch_id
+currency
+status
+
+============================================================
+45. JOURNAL SYSTEM
+============================================================
+
+Every financial transaction should generate proper journal entries.
+
+Examples:
+
+Invoice:
+
+Debit:
+Accounts Receivable
+
+Credit:
+Revenue
+
+Payment:
+
+Debit:
+Cash/Bank
+
+Credit:
+Accounts Receivable
+
+Expense:
+
+Debit:
+Expense Account
+
+Credit:
+Cash/Bank/Payable
+
+Refund:
+
+Reverse appropriate accounting entries.
+
+Never create financial transactions without proper accounting impact when accounting integration is enabled.
+
+============================================================
+46. LEDGERS
+============================================================
+
+Support:
+
+Customer Ledger
+Supplier Ledger
+Agency Ledger
+Cash Ledger
+Bank Ledger
+General Ledger
+
+Include:
+
+opening balance
+debit
+credit
+running balance
+transaction reference
+date
+
+============================================================
+47. RECEIVABLES / PAYABLES
+============================================================
+
+Create:
+
+accounts_receivable
+accounts_payable
+
+Support aging:
+
+Current
+1–30
+31–60
+61–90
+90+
+
+Reports:
+
+- Customer aging
+- Supplier aging
+- Agency aging
+
+============================================================
+48. TAX SYSTEM
+============================================================
+
+Create configurable tax architecture.
+
+Support:
+
+- tax types
+- tax rates
+- company-specific taxes
+- service-specific taxes
+- inclusive/exclusive tax
+- effective dates
+
+============================================================
+49. DISCOUNT SYSTEM
+============================================================
+
+Support:
+
+- percentage discount
+- fixed discount
+- customer discount
+- package discount
+- service discount
+- promotional discount
+
+Do not allow discounts to bypass permission controls.
+
+============================================================
+50. APPROVAL WORKFLOW
+============================================================
+
+Create configurable approval architecture.
+
+Support approvals for:
+
+- expenses
+- refunds
+- discounts
+- invoices
+- payments
+- cancellations
+- financial adjustments
+- supplier payments
+
+Support:
+
+pending
+approved
+rejected
+cancelled
+
+Record:
+
+approved_by
+approved_at
+rejection_reason
+
+============================================================
+51. DASHBOARD
+============================================================
+
+Create a professional company dashboard.
+
+Dashboard must be database-driven.
+
+NO fake statistics.
+
+KPI cards should include where applicable:
+
+- Total Customers
+- New Customers
+- Total Bookings
+- Umrah Bookings
+- Ticket Bookings
+- Hotel Bookings
+- Transport Bookings
+- Visa Applications
+- Total Invoices
+- Total Payments
+- Total Expenses
+- Receivables
+- Payables
+- Revenue
+- Profit
+- Outstanding Balance
+
+============================================================
+52. DASHBOARD CHARTS / GRAPHS
+============================================================
+
+EVERY MAIN DASHBOARD MUST HAVE MEANINGFUL
+DATABASE-DRIVEN CHARTS / GRAPHS.
+
+Do not create decorative charts with fake data.
+
+Charts must use real database data.
+
+============================================================
+
+MAIN DASHBOARD CHARTS:
+
+1. Revenue vs Payments
+2. Revenue vs Expenses
+3. Monthly Revenue
+4. Monthly Payments
+5. Monthly Expenses
+6. Profit Trend
+7. Customer Growth
+8. Booking Growth
+9. Service Distribution
+10. Payment Method Distribution
+11. Invoice Status
+12. Receivable Aging
+13. Payable Aging
+14. Top Services
+15. Top Customers
+16. Top Agencies
+17. Branch Performance
+18. Currency Distribution
+19. Ticket Sales Trend
+20. Umrah Booking Trend
+21. Hotel Booking Trend
+22. Transport Booking Trend
+23. Visa Application Trend
+
+Charts must support:
+
+- date filters
+- branch filters
+- service filters
+- currency filters
+- customer filters
+- agency filters
+
+============================================================
+53. MODULE DASHBOARDS
+============================================================
+
+Each major module should have its own dashboard/overview
+where meaningful.
+
+Customers:
+
+- customer growth
+- active customers
+- new customers
+- customer nationality distribution
+- customer service distribution
+
+Tickets:
+
+- ticket sales
+- airline distribution
+- route distribution
+- monthly bookings
+- ticket revenue
+
+Umrah:
+
+- Umrah bookings
+- package distribution
+- VIP vs Regular
+- 14/21/28 day distribution
+- visa status
+- monthly Umrah revenue
+
+Hotels:
+
+- room bookings
+- occupancy
+- hotel distribution
+- nights
+- hotel revenue
+
+Transport:
+
+- transfers
+- completed trips
+- vehicle utilization
+- driver assignments
+- transport revenue
+
+
+- bookings
+- destinations
+- package usage
+- revenue
+
+Visa:
+
+- applications
+- approved
+- pending
+- rejected
+- country distribution
+
+Foreign Visitors:
+
+- visitor count
+- nationality
+- services
+- arrivals
+- departures
+- revenue
+
+Invoices:
+
+- issued
+- paid
+- unpaid
+- overdue
+- invoice revenue
+
+Payments:
+
+- payment methods
+- cash
+- bank
+- card
+- online
+- payment trend
+
+Expenses:
+
+- expense categories
+- monthly expenses
+- branch expenses
+- supplier expenses
+
+Finance:
+
+- revenue
+- expenses
+- profit
+- receivables
+- payables
+- cash flow
+- trial balance
+- account balances
+
+============================================================
+54. DASHBOARD FILTERS
+============================================================
+
+All dashboards should support relevant filters.
+
+Examples:
+
+- Today
+- Yesterday
+- This Week
+- This Month
+- Last Month
+- This Year
+- Custom Date Range
+
+Also:
+
+- Branch
+- Service
+- Currency
+- Customer
+- Agency
+- Supplier
+
+============================================================
+55. DASHBOARD WIDGET ARCHITECTURE
+============================================================
+
+Create a flexible dashboard widget system.
+
+Support:
+
+dashboard_widgets
+dashboard_preferences
+dashboard_layouts
+
+Each widget may have:
+
+- widget_type
+- title
+- position
+- width
+- height
+- visibility
+- permissions
+- company_id
+- user_id
+
+Allow users to customize dashboard layout where permitted.
+
+============================================================
+56. REPORTING SYSTEM
+============================================================
+
+Create professional reporting architecture.
+
+Reports:
+
+Customers
+Tickets
+Umrah
+Hotels
+Transport
+Visa
+Foreign Visitors
+Invoices
+Payments
+Expenses
+Receivables
+Payables
+General Ledger
+Trial Balance
+Profit & Loss
+Balance Sheet
+Cash Flow
+Customer Statement
+Supplier Statement
+Agency Statement
+Branch Performance
+Service Performance
+
+============================================================
+57. REPORT FILTERS
+============================================================
+
+Reports should support:
+
+- date range
+- branch
+- customer
+- supplier
+- agency
+- service
+- currency
+- payment method
+- status
+
+============================================================
+58. EXPORT SYSTEM
+============================================================
+
+Support:
+
+PDF
+Print
+Excel
+CSV
+
+Exports must respect:
+
+- permissions
+- company_id
+- branch permissions
+- selected filters
+
+============================================================
+59. PDF / PRINT
+============================================================
+
+Professional PDF templates must use dynamic:
+
+- company logo
+- company name
+- company colors
+- language
+- currency
+- address
+- phone
+- email
+
+Support RTL PDFs for:
+
+Pashto
+Dari
+
+and LTR PDFs for:
+
+English
+
+============================================================
+60. RECEIPTS
+============================================================
+
+Create professional receipt system.
+
+Receipt should contain:
+
+- company logo
+- company information
+- customer
+- payment number
+- invoice number
+- amount
+- currency
+- method
+- account
+- date
+- received by
+- balance
+- signature if configured
+
+============================================================
+61. NOTIFICATION SYSTEM
+============================================================
+
+Support notifications for:
+
+- new booking
+- payment
+- invoice
+- overdue invoice
+- visa expiry
+- passport expiry
+- hotel check-in
+- hotel check-out
+- pickup
+- drop-off
+- approval request
+- approval result
+- password reset
+- system events
+
+Channels:
+
+- in-app
+- email
+- SMS-ready
+- WhatsApp-ready
+
+============================================================
+62. REMINDERS
+============================================================
+
+Support reminders for:
+
+- passport expiry
+- visa expiry
+- payment due
+- hotel check-in
+- hotel check-out
+- pickup time
+- flight departure
+- booking deadlines
+
+============================================================
+63. EMAIL SYSTEM
+============================================================
+
+Support company-specific SMTP.
+
+Fields:
+
+SMTP host
+SMTP port
+username
+password
+encryption
+from email
+from name
+
+Email templates must support:
+
+Pashto
+Dari
+English
+
+Use company branding.
+
+============================================================
+64. DOCUMENT EXPIRATION
+============================================================
+
+Documents such as:
+
+Passport
+Visa
+License
+Hotel document
+Contract
+
+must support expiration date.
+
+Create notification/reminder rules.
+
+============================================================
+65. BOOKING ARCHITECTURE
+============================================================
+
+Create reusable booking architecture where appropriate.
+
+Bookings can connect to:
+
+- Customer
+- Service
+- Invoice
+- Payment
+- Supplier
+- Agency
+- Pickup
+- Drop-off
+- Documents
+- Notes
+
+Support booking statuses.
+
+============================================================
+66. SERVICE COST VS SELLING PRICE
+============================================================
+
+Every commercial service should support:
+
+cost_price
+selling_price
+profit_amount
+currency
+
+Profit should be calculated using proper currency conversion where necessary.
+
+============================================================
+67. PROFIT SYSTEM
+============================================================
+
+Track profitability by:
+
+- company
+- branch
+- service
+- booking
+- customer
+- supplier
+- agency
+- employee if applicable
+- date
+
+============================================================
+68. AGENCY COMMISSION
+============================================================
+
+Support:
+
+- commission percentage
+- fixed commission
+- service commission
+- agency ledger
+- commission payable
+- commission receivable
+
+============================================================
+69. SUPPLIER COST
+============================================================
+
+Track supplier costs separately from selling prices.
+
+This is essential for:
+
+- hotel
+- transport
+- ticket
+- Umrah
+- visa
+- other services
+
+============================================================
+70. CASH FLOW
+============================================================
+
+Create cash flow architecture.
+
+Reports:
+
+- cash inflow
+- cash outflow
+- net cash flow
+- account balance
+- branch cash flow
+
+============================================================
+71. FINANCIAL PERIODS
+============================================================
+
+Support:
+
+- fiscal years
+- accounting periods
+- open period
+- closed period
+
+Prevent modification of closed periods unless authorized.
+
+============================================================
+72. DATA INTEGRITY
+============================================================
+
+Use:
+
+- foreign keys
+- unique constraints
+- indexes
+- check constraints where supported
+- NOT NULL where appropriate
+- appropriate defaults
+- transaction integrity
+
+Money:
+
+DECIMAL
+
+Dates:
+
+proper DATE / DATETIME / TIMESTAMP
+
+Never use FLOAT for financial amounts.
+
+============================================================
+73. SOFT DELETE
+============================================================
+
+For appropriate business tables support:
+
+deleted_at
+deleted_by
+
+Do not physically delete important financial records.
+
+Financial records must be immutable or reversal-based where appropriate.
+
+============================================================
+74. FINANCIAL IMMUTABILITY
+============================================================
+
+Do not allow users to simply edit/delete posted accounting transactions.
+
+Use:
+
+- reversal
+- adjustment
+- correction journal
+
+This protects financial integrity.
+
+============================================================
+75. UNIQUE NUMBERING
+============================================================
+
+Create company-specific sequences for:
+
+Customer
+Invoice
+Receipt
+Payment
+Booking
+Ticket
+Umrah
+Visa
+Expense
+Transport
+Hotel
+Document
+
+Support:
+
+prefix
+year
+branch
+sequence
+padding
+
+============================================================
+76. SEARCH / FILTER / SORT / PAGINATION
+============================================================
+
+Every major list must support:
+
+- search
+- advanced filters
+- sorting
+- pagination
+- status filtering
+- date filtering
+- export
+
+============================================================
+77. RESPONSIVE DESIGN REQUIREMENT
+============================================================
+
+The future frontend must be responsive.
+
+Support:
+
+Desktop
+Laptop
+Tablet
+Mobile
+
+Do not globally hide scrollbars.
+
+Allow scrolling where content requires it.
+
+Tables should support horizontal scrolling when necessary.
+
+Sidebar should support proper mobile behavior.
+
+============================================================
+78. ACCESSIBILITY
+============================================================
+
+Support:
+
+- keyboard navigation
+- readable contrast
+- focus states
+- accessible labels
+- semantic HTML
+- screen-reader-friendly controls
+- proper error messages
+
+============================================================
+79. SECURITY
+============================================================
+
+Protect against:
+
+SQL Injection
+XSS
+CSRF
+Session Fixation
+Session Hijacking
+Brute Force
+Path Traversal
+Unauthorized File Access
+Insecure Direct Object References
+Privilege Escalation
+Mass Assignment
+Improper Tenant Isolation
+
+Use:
+
+PDO prepared statements
+CSRF tokens
+secure password hashing
+authorization middleware
+tenant checks
+secure file storage
+security headers
+rate limiting
+
+============================================================
+80. API READY
+============================================================
+
+Architecture must be API-ready.
+
+Future API may support:
+
+- authentication
+- customers
+- bookings
+- tickets
+- Umrah
+- hotels
+- transport
+- visa
+- payments
+- invoices
+- reports
+
+API must respect:
+
+company_id
+branch_id
+user permissions
+
+============================================================
+81. SAUDI / UMRAH INTEGRATION READY
+============================================================
+
+Architecture should be ready for future integration with:
+
+- Saudi Umrah systems
+- Nusuk-related workflows
+- Saudi service providers
+- hotel providers
+- transport providers
+- visa providers
+- airlines
+
+Do not hardcode external API logic into core business tables.
+
+Use integration architecture.
+
+============================================================
+82. INTEGRATION ARCHITECTURE
+============================================================
+
+Create support for:
+
+integrations
+integration_settings
+integration_logs
+external_references
+webhooks
+API credentials
+
+Credentials must be encrypted/secured.
+
+============================================================
+83. BACKUP / RESTORE
+============================================================
+
+Architecture must support:
+
+- database backup
+- restore
+- automated backup strategy
+- backup history
+- backup verification
+- retention policy
+
+Never expose backup files publicly.
+
+============================================================
+84. SYSTEM SETTINGS
+============================================================
+
+Create centralized settings.
+
+Settings can belong to:
+
+- system
+- company
+- branch
+- user
+
+Examples:
+
+- language
+- currency
+- timezone
+- email
+- branding
+- invoice
+- numbering
+- notification
+- security
+- financial
+- report
+
+============================================================
+85. FEATURE FLAGS
+============================================================
+
+Support feature/module activation per company.
+
+Examples:
+
+enable_tickets
+enable_umrah
+enable_hotels
+enable_transport
+enable_visa
+enable_foreign_visitors
+enable_finance
+enable_reports
+
+============================================================
+86. SUBSCRIPTION / LICENSING READY
+============================================================
+
+Because this is a commercial product, architecture should be ready
+for future licensing/subscription.
+
+Support future:
+
+- plans
+- subscriptions
+- license keys
+- trial period
+- expiration
+- feature limits
+- user limits
+- branch limits
+- storage limits
+- module limits
+
+Do not force payment/subscription implementation into the first
+version if not required, but make architecture ready.
+
+============================================================
+87. COMPANY LIMITS
+============================================================
+
+Support configurable limits such as:
+
+max_users
+max_branches
+max_storage
+max_customers
+max_monthly_bookings
+
+These limits may depend on subscription plan.
+
+============================================================
+88. SYSTEM ADMIN VS COMPANY ADMIN
+============================================================
+
+System Administrator can manage:
+
+- companies
+- plans
+- subscriptions
+- global settings
+- system languages
+- global currencies
+- integrations
+- system logs
+
+Company Administrator can manage only:
+
+- own company
+- own branches
+- own users
+- own roles
+- own settings
+- own data
+
+============================================================
+89. COMPANY ONBOARDING
+============================================================
+
+When a new company is created automatically initialize:
+
+- company
+- first branch
+- administrator
+- role
+- permissions
+- languages
+- currencies
+- number sequences
+- chart of accounts
+- payment methods
+- invoice settings
+- branding settings
+- notification settings
+
+============================================================
+90. SEED DATA
+============================================================
+
+Provide safe seed data for:
+
+- system roles
+- permissions
+- languages
+- currencies
+- countries
+- service types
+- account types
+- payment methods
+- statuses
+
+Do NOT insert fake business transactions.
+
+============================================================
+91. DATABASE DESIGN QUALITY
+============================================================
+
+Database must be normalized and professional.
+
+Avoid:
+
+- unnecessary duplicate columns
+- repeating groups
+- comma-separated IDs
+- JSON for core relational business data
+- hardcoded company values
+- hardcoded currency
+- hardcoded language
+- hardcoded branch
+- duplicated customer information
+
+Use relational tables.
+
+JSON may be used only where appropriate, such as:
+
+- audit snapshots
+- flexible metadata
+- integration payloads
+
+============================================================
+92. INDEXING
+============================================================
+
+Create indexes for:
+
+company_id
+branch_id
+user_id
+customer_id
+supplier_id
+agency_id
+booking_id
+invoice_id
+payment_id
+created_at
+updated_at
+status
+date fields
+foreign keys
+
+Create composite indexes where useful.
+
+============================================================
+93. DATABASE TABLE NAMING
+============================================================
+
+Use consistent naming convention.
+
+Prefer:
+
+snake_case
+
+Examples:
+
+companies
+branches
+users
+roles
+permissions
+customers
+customer_documents
+invoices
+invoice_items
+payments
+payment_allocations
+journal_entries
+journal_lines
+
+============================================================
+94. TABLE AUDIT COLUMNS
+============================================================
+
+Where appropriate include:
+
+created_at
+updated_at
+created_by
+updated_by
+deleted_at
+deleted_by
+
+============================================================
+95. TRANSACTION SAFETY
+============================================================
+
+Critical operations must use database transactions.
+
+Examples:
+
+Create invoice + journal
+Payment + allocation + journal
+Expense + journal
+Refund + reversal
+Booking + invoice
+Umrah booking + services
+
+If one operation fails, rollback all related changes.
+
+============================================================
+96. ERROR HANDLING
+============================================================
+
+Create consistent error handling.
+
+Never expose:
+
+- SQL errors
+- database credentials
+- stack traces
+- internal paths
+
+to normal users.
+
+Log technical errors securely.
+
+Show user-friendly translated messages.
+
+============================================================
+97. ACTIVITY LOG
+============================================================
+
+Dashboard should show recent:
+
+- logins
+- bookings
+- payments
+- invoices
+- expenses
+- approvals
+- system activities
+
+Only show activities the current user is authorized to see.
+
+============================================================
+98. EMPLOYEE / STAFF READY
+============================================================
+
+Architecture should be ready for employee/staff management.
+
+Support future:
+
+- employees
+- departments
+- positions
+- branches
+- salaries
+- commissions
+- assigned services
+
+============================================================
+99. COMMISSION SYSTEM
+============================================================
+
+Support future commission calculations for:
+
+- sales agents
+- ticket agents
+- Umrah agents
+- employees
+- agencies
+
+Commission can be:
+
+percentage
+fixed
+service-specific
+
+============================================================
+100. REPORT SCHEDULING
+============================================================
+
+Future-ready support for scheduled reports.
+
+Examples:
+
+Daily sales report
+Weekly revenue report
+Monthly financial report
+
+Delivery:
+
+email
+download
+dashboard
+
+============================================================
+101. SAVED FILTERS
+============================================================
+
+Users should be able to save frequently used report/list filters.
+
+Support:
+
+saved_filters
+user_id
+company_id
+module
+filter_data
+name
+
+============================================================
+102. REPORT DEFINITIONS
+============================================================
+
+Support configurable report definitions where appropriate.
+
+Do not make all reports hardcoded if a dynamic reporting architecture
+is practical.
+
+============================================================
+103. DATA RETENTION
+============================================================
+
+Support configurable retention policies for:
+
+- logs
+- notifications
+- audit records
+- temporary files
+- sessions
+
+Never automatically delete legally important financial records.
+
+============================================================
+104. PRIVACY
+============================================================
+
+Protect sensitive information:
+
+- passport
+- national ID
+- phone
+- email
+- financial data
+- documents
+
+Use permission-based access.
+
+Consider encryption for highly sensitive fields where appropriate.
+
+============================================================
+105. CUSTOMER PORTAL READY
+============================================================
+
+Future-ready architecture for customer portal.
+
+Customers may eventually see:
+
+- bookings
+- invoices
+- payments
+- documents
+- tickets
+- Umrah information
+- hotel information
+- transport
+- statements
+
+Only their own data.
+
+============================================================
+106. SUPPLIER PORTAL READY
+============================================================
+
+Future-ready supplier portal.
+
+Suppliers may eventually see only authorized:
+
+- bookings
+- invoices
+- payments
+- statements
+
+============================================================
+107. MOBILE APP READY
+============================================================
+
+Database/API architecture should be suitable for future:
+
+Android
+iOS
+Web App
+
+Do not design database in a way that only works with PHP web pages.
+
+============================================================
+108. REAL-TIME READY
+============================================================
+
+Architecture should be ready for future:
+
+- notifications
+- live booking status
+- transport status
+- driver assignment
+- payment notifications
+
+============================================================
+109. DASHBOARD PERFORMANCE
+============================================================
+
+Charts and dashboards must not execute extremely expensive queries
+on every page load.
+
+Where necessary use:
+
+- optimized queries
+- indexes
+- reporting views
+- summary tables
+- cached statistics
+
+But do not sacrifice data accuracy.
+
+============================================================
+110. CHART DATA ARCHITECTURE
+============================================================
+
+Charts must always have a reliable database source.
+
+For every chart define:
+
+- source table
+- source fields
+- aggregation
+- filters
+- date field
+- company filter
+- branch filter
+
+Example:
+
+Revenue Chart:
+
+source:
+invoices / payments / accounting
+
+aggregation:
+SUM()
+
+group:
+month
+
+filters:
+company_id
+branch_id
+date_range
+
+============================================================
+111. NO FAKE DASHBOARD DATA
+============================================================
+
+Do NOT use hardcoded values such as:
+
+$50,000
+$25,000
+150 customers
+80 bookings
+
+unless they come from actual seed/demo mode.
+
+Production dashboard must use real database data.
+
+============================================================
+112. EMPTY STATES
+============================================================
+
+If no records exist, display translated empty states.
+
+Example:
+
+Pashto:
+"تر اوسه هېڅ معلومات نشته"
+
+Dari:
+"هنوز اطلاعاتی موجود نیست"
+
+English:
+"No data available yet"
+
+Do not show fake charts when there is no data.
+
+============================================================
+113. DATABASE RELATIONSHIPS
+============================================================
+
+Provide complete:
+
+- primary keys
+- foreign keys
+- unique keys
+- indexes
+- relationships
+- cascade rules
+- restrict rules
+
+Avoid dangerous cascading deletes on financial/business records.
+
+============================================================
+114. ERD
+============================================================
+
+Provide a complete ERD showing:
+
+Companies
+Branches
+Users
+Roles
+Permissions
+Customers
+Suppliers
+Agencies
+Services
+Bookings
+Tickets
+Umrah
+Hotels
+Transport
+Visa
+Foreign Visitors
+Invoices
+Payments
+Expenses
+Accounting
+Documents
+Notifications
+Audit
+
+============================================================
+115. COMPLETE TABLE LIST
+============================================================
+
+Provide a complete table inventory grouped by module.
+
+Example groups:
+
+CORE
+TENANCY
+AUTH
+LOCALIZATION
+CUSTOMERS
+SERVICES
+TICKETS
+UMRAH
+HOTELS
+TRANSPORT
+VISA
+FOREIGN VISITORS
+INVOICES
+PAYMENTS
+EXPENSES
+FINANCE
+REPORTS
+DOCUMENTS
+NOTIFICATIONS
+AUDIT
+INTEGRATIONS
+SUBSCRIPTIONS
+
+============================================================
+116. COMPLETE SQL
+============================================================
+
+Generate complete executable SQL.
+
+The SQL must include:
+
+- CREATE DATABASE if appropriate
+- tables
+- columns
+- data types
+- primary keys
+- foreign keys
+- indexes
+- unique constraints
+- default values
+- seed/reference data
+- comments where useful
+
+Target:
+
+MySQL / MariaDB
+
+Use:
+
+utf8mb4
+
+============================================================
+117. MIGRATION ORDER
+============================================================
+
+Provide exact migration order.
+
+Example:
+
+1. currencies
+2. countries
+3. system tables
+4. companies
+5. branches
+6. users
+7. roles
+8. permissions
+9. customers
+10. services
+11. bookings
+12. invoices
+13. payments
+14. finance
+
+etc.
+
+============================================================
+118. DATABASE DOCUMENTATION
+============================================================
+
+For every table explain:
+
+- purpose
+- primary key
+- important columns
+- foreign keys
+- indexes
+- relationship
+- why the table exists
+
+============================================================
+119. FINANCIAL FLOW DOCUMENTATION
+============================================================
+
+Explain exact journal flow for:
+
+Customer Invoice
+Customer Payment
+Supplier Invoice
+Supplier Payment
+Expense
+Refund
+Credit Note
+Debit Note
+Commission
+Exchange Gain/Loss
+Opening Balance
+
+============================================================
+120. BUSINESS FLOW
+============================================================
+
+Explain:
+
+Customer
+→ Booking
+→ Service
+→ Invoice
+→ Payment
+→ Accounting
+→ Ledger
+→ Report
+
+For Umrah:
+
+Customer
+→ Umrah Booking
+→ Family Members
+→ Passport
+→ Visa
+→ Hotel
+→ Transport
+→ Pickup/Drop-off
+→ Invoice
+→ Payment
+→ Accounting
+→ Profit
+
+============================================================
+121. WHITE-LABEL BUSINESS FLOW
+============================================================
+
+New Company:
+
+Company Registration
+→ Branding
+→ Logo
+→ Colors
+→ Language
+→ Currency
+→ Timezone
+→ Branch
+→ Administrator
+→ Roles
+→ Permissions
+→ Chart of Accounts
+→ Number Sequences
+→ Modules
+→ Dashboard
+
+After that the company can immediately use the ERP.
+
+============================================================
+122. COMPANY BRANDING PREVIEW
+============================================================
+
+The system should allow a company administrator to preview:
+
+- Login
+- Sidebar
+- Dashboard
+- Invoice
+- Receipt
+- PDF
+
+before applying branding changes.
+
+============================================================
+123. THEME VARIABLES
+============================================================
+
+Frontend should use dynamic CSS variables.
+
+Concept:
+
+--primary-color
+--secondary-color
+--accent-color
+--background-color
+--text-color
+--sidebar-color
+
+Values should come from authenticated company settings.
+
+Do not duplicate company-specific CSS files.
+
+============================================================
+124. CUSTOMIZATION WITHOUT CODE
+============================================================
+
+Company administrators should be able to customize where permitted:
+
+- logo
+- colors
+- language
+- currency
+- timezone
+- invoice appearance
+- numbering
+- enabled modules
+- notifications
+- company information
+
+without editing source code.
+
+============================================================
+125. COMMERCIAL LICENSE ARCHITECTURE
+============================================================
+
+Design database to support future:
+
+licenses
+subscriptions
+plans
+plan_features
+company_subscriptions
+license_keys
+
+Potential statuses:
+
+trial
+active
+suspended
+expired
+cancelled
+
+============================================================
+126. PLAN FEATURE LIMITS
+============================================================
+
+Future plans may define:
+
+- maximum users
+- maximum branches
+- maximum customers
+- maximum bookings
+- maximum storage
+- enabled modules
+- API access
+- advanced reports
+- accounting features
+
+============================================================
+127. SUPER ADMIN PANEL
+============================================================
+
+Create architecture for a separate system-level administration area.
+
+System Admin can see:
+
+- total companies
+- active companies
+- suspended companies
+- subscription status
+- total users
+- system health
+- storage
+- errors
+- audit
+- integrations
+
+But System Admin access must be separated from normal company users.
+
+============================================================
+128. SYSTEM HEALTH
+============================================================
+
+Future-ready monitoring for:
+
+- database connection
+- storage
+- email
+- API integrations
+- scheduled jobs
+- backups
+- errors
+
+============================================================
+129. CRON / SCHEDULED JOBS READY
+============================================================
+
+Architecture must support scheduled jobs for:
+
+- reminders
+- expired documents
+- invoice overdue checks
+- report generation
+- notifications
+- backups
+- subscription checks
+
+============================================================
+130. NO HARD-CODED COMPANY DATA
+============================================================
+
+Absolutely DO NOT hardcode:
+
+company name
+logo
+colors
+currency
+language
+phone
+email
+address
+branch
+invoice prefix
+
+inside PHP source code.
+
+Everything must come from database/company settings.
+
+============================================================
+131. NO CROSS-TENANT DATA
+============================================================
+
+This is one of the highest-priority requirements.
+
+Every query must enforce tenant isolation.
+
+Example concept:
+
+WHERE company_id = CURRENT_COMPANY_ID
+
+Do not trust:
+
+$_GET['company_id']
+$_POST['company_id']
+
+for authorization.
+
+============================================================
+132. SECURITY OF COMPANY SWITCHING
+============================================================
+
+If a System Administrator is allowed to switch companies,
+that must be an explicit authorized server-side operation.
+
+Normal company users cannot switch companies.
+
+============================================================
+133. DATABASE TRANSACTION RULE
+============================================================
+
+Any operation involving multiple related tables must use transactions.
+
+Example:
+
+Create Invoice
++
+Invoice Items
++
+Payment
++
+Journal Entry
+
+must either all succeed or all rollback.
+
+============================================================
+134. SOFT DELETE AND AUDIT
+============================================================
+
+For business records:
+
+Do not simply DELETE important records.
+
+Prefer:
+
+status
+deleted_at
+deleted_by
+audit trail
+
+Financial transactions should use reversal.
+
+============================================================
+135. PERFORMANCE
+============================================================
+
+The database must be designed for commercial growth.
+
+It should be capable of supporting:
+
+thousands of customers
+thousands of bookings
+large transaction volumes
+multiple branches
+multiple companies
+
+Use proper:
+
+indexes
+foreign keys
+pagination
+query optimization
+summary/reporting structures
+
+============================================================
+136. SCALABILITY
+============================================================
+
+The architecture should allow future migration from:
+
+single-server deployment
+
+to:
+
+cloud server
+managed database
+load-balanced architecture
+API services
+
+without redesigning the entire database.
+
+============================================================
+137. DEVELOPMENT STACK
+============================================================
+
+Backend target:
+
+PHP 8.2+
+
+Database:
+
+MySQL / MariaDB
+
+Frontend:
+
+HTML5
+CSS3
+JavaScript
+
+Use secure PDO prepared statements.
+
+============================================================
+138. FILE STRUCTURE
+============================================================
+
+Prepare architecture compatible with:
+
+tourism_erp/
+
+assets/
+auth/
+config/
+layouts/
+dashboard/
+customers/
+tickets/
+umrah/
+hotels/
+transport/
+visa/
+foreign_visitors/
+invoices/
+payments/
+expenses/
+finance/
+reports/
+settings/
+integrations/
+storage/
+
+Each module should be independently organized.
+
+============================================================
+139. MODULE STRUCTURE
+============================================================
+
+Example:
+
+customers/
+
+index.php
+view.php
+create.php
+edit.php
+customers.css
+customers.js
+
+Use the same clean structure for other modules.
+
+============================================================
+140. CONFIGURATION
+============================================================
+
+Architecture should separate:
+
+database configuration
+authentication
+security
+tenant
+language
+mail
+application settings
+
+Never expose credentials.
+
+============================================================
+141. ENVIRONMENT VARIABLES
+============================================================
+
+Sensitive configuration should eventually support:
+
+.env
+
+for:
+
+database credentials
+SMTP password
+API keys
+encryption keys
+application secrets
+
+Never commit secrets to source control.
+
+============================================================
+142. ENCRYPTION
+============================================================
+
+Support secure encryption for highly sensitive configuration such as:
+
+- API credentials
+- SMTP credentials where appropriate
+- external integration secrets
+
+Never store passwords as plain text.
+
+============================================================
+143. PASSWORD SECURITY
+============================================================
+
+Use:
+
+password_hash()
+PASSWORD_DEFAULT
+
+or an appropriately secure modern password hashing algorithm.
+
+Never store plaintext passwords.
+
+============================================================
+144. CSRF / XSS / SQL INJECTION
+============================================================
+
+All forms must use CSRF.
+
+All database queries must use prepared statements.
+
+All user output must be escaped appropriately.
+
+============================================================
+145. FILE ACCESS SECURITY
+============================================================
+
+Sensitive documents must not be directly publicly accessible.
+
+Use authenticated download endpoints.
+
+Check:
+
+company_id
+user_id
+permission
+document ownership
+
+before download.
+
+============================================================
+146. REPORT PERMISSIONS
+============================================================
+
+Not every user can see financial reports.
+
+Permissions must control:
+
+- Profit & Loss
+- Balance Sheet
+- Trial Balance
+- Customer Ledger
+- Supplier Ledger
+- Agency Ledger
+- Cash Flow
+
+============================================================
+147. DATA EXPORT SECURITY
+============================================================
+
+Export must respect:
+
+- tenant
+- branch
+- permissions
+- filters
+
+Prevent users from exporting unauthorized records.
+
+============================================================
+148. PRINT SECURITY
+============================================================
+
+Print/PDF endpoints must verify ownership/authorization.
+
+Never allow:
+
+?id=123
+
+to reveal another company's invoice.
+
+============================================================
+149. NOTIFICATION SECURITY
+============================================================
+
+Notifications must be tenant-aware.
+
+Company A users must never receive Company B notifications.
+
+============================================================
+150. FINAL DATABASE DELIVERABLE
+============================================================
+
+The final response MUST provide:
+
+1. Complete architecture
+2. Complete module list
+3. Complete table list
+4. Complete SQL schema
+5. Relationships
+6. Foreign keys
+7. Indexes
+8. ERD
+9. Migration order
+10. Seed data
+11. Finance flow
+12. Booking flow
+13. Pickup/drop-off architecture
+14. White-label architecture
+15. Multi-tenant architecture
+16. Localization architecture
+17. Dashboard architecture
+18. Chart/Graph data sources
+19. Report architecture
+20. Security architecture
+21. File/document architecture
+22. Notification architecture
+23. API architecture
+24. Subscription-ready architecture
+25. Folder structure
+26. Database documentation
+27. Sample queries for important dashboards
+28. Sample accounting journal flows
+29. Sample company onboarding flow
+
+============================================================
+151. IMPORTANT FINAL RULES
+============================================================
+
+DO NOT:
+
+- simplify the database unnecessarily
+- remove important modules
+- create fake dashboard statistics
+- hardcode company information
+- hardcode colors
+- hardcode language
+- hardcode currency
+- mix languages
+- ignore tenant isolation
+- ignore branch isolation
+- use FLOAT for money
+- store plaintext passwords
+- store raw password reset tokens
+- allow unauthorized company switching
+- rely only on frontend permission hiding
+- delete financial records casually
+- create duplicate architecture for every company
+
+DO:
+
+- build a professional commercial architecture
+- use normalized relational design
+- support multiple companies
+- support multiple branches
+- support multiple languages
+- support RTL/LTR
+- support multiple currencies
+- support dynamic branding
+- support dynamic logo
+- support dynamic colors
+- support pickup/drop-off
+- support full finance
+- support charts and graphs
+- use real database data
+- support reports
+- support PDF/print
+- support security
+- support audit logs
+- support documents
+- support APIs
+- support future mobile apps
+- support future subscriptions
+- support SaaS
+- support Saudi/Umrah integrations
+- support scalability
+
+============================================================
+152. MOST IMPORTANT COMMERCIAL REQUIREMENT
+============================================================
+
+I want to be able to sell this ERP to another company.
+
+Therefore:
+
+If Company A purchases the ERP:
+
+Company A gets:
+
+Company A Logo
+Company A Name
+Company A Colors
+Company A Language
+Company A Currency
+Company A Timezone
+Company A Branches
+Company A Users
+Company A Data
+Company A Finance
+Company A Reports
+
+If Company B purchases the ERP:
+
+Company B gets:
+
+Company B Logo
+Company B Name
+Company B Colors
+Company B Language
+Company B Currency
+Company B Timezone
+Company B Branches
+Company B Users
+Company B Data
+Company B Finance
+Company B Reports
+
+Both companies use the SAME core ERP architecture.
+
+Their data MUST remain completely isolated.
+
+No manual PHP redesign should be required.
+
+============================================================
+153. FINAL OBJECTIVE
+============================================================
+
+Build this as a REAL COMMERCIAL ERP PRODUCT,
+not as a small demo project.
+
+The final architecture must be:
+
+Professional
+Secure
+Scalable
+Modular
+White-label
+Multi-tenant
+Multi-company
+Multi-branch
+Multi-language
+Multi-currency
+Finance-integrated
+Dashboard-driven
+Chart-driven
+Report-driven
+API-ready
+SaaS-ready
+Umrah-ready
+Travel-ready
+Tourism-ready
+
+The database must be designed so that the system can grow
+from one company to hundreds or thousands of companies without
+requiring a complete redesign.
+
+============================================================
+END OF MASTER REQUIREMENT
+============================================================

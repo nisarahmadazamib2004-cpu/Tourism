@@ -1,0 +1,1 @@
+<?php require_once __DIR__.'/../config/auth.php'; require_login(); header('Content-Type:text/plain'); echo "Backup service foundation ready. Configure mysqldump path and storage policy before enabling production backups.\n";

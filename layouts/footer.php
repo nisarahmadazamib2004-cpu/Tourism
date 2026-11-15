@@ -1,0 +1,1 @@
+<footer class="footer">© <?=date('Y')?> Tourism ERP · Commercial White-Label ERP</footer><script src="<?=e(url('assets/js/app.js'))?>"></script><script src="<?=e(url('assets/js/theme.js'))?>"></script></body></html>

@@ -1,0 +1,1 @@
+(()=>{const root=document.documentElement;const saved=localStorage.getItem('erp-theme');if(saved)root.dataset.theme=saved;document.addEventListener('DOMContentLoaded',()=>{document.getElementById('themeToggle')?.addEventListener('click',()=>{const n=root.dataset.theme==='dark'?'light':'dark';root.dataset.theme=n;localStorage.setItem('erp-theme',n);});});})();

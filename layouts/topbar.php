@@ -1,0 +1,1 @@
+<header class="topbar"><button class="icon-btn" id="sidebarToggle">☰</button><div class="global-search"><input id="globalSearch" type="search" placeholder="Search..."></div><div class="top-actions"><button class="icon-btn" id="themeToggle" title="Toggle theme">◐</button><button class="icon-btn">🔔</button><div class="user-chip">Admin</div></div></header>
